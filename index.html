@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pedagogía del Conflicto | Óleo y Estrategia</title>
-    
-    <!-- Fuentes y CDN de Iconos -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@700;900&display=swap');
 
         :root {
-            --gold-leaf: #d4af37;
+            --gold-leaf: #b8860b;
             --blood-wine: #880808;
-            --charcoal: #121212;
-            --parchment: #e8e2d2;
-            --oil-black: #050505;
+            --charcoal: #ffffff;
+            --parchment: #222222;
+            --oil-black: #fcfcfc;
         }
 
         /* Reset y General */
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             background-color: var(--oil-black);
             color: var(--parchment);
@@ -30,15 +34,18 @@
             min-height: 100vh;
         }
 
-        h1, h2, h3, h4 {
+        h1,
+        h2,
+        h3,
+        h4 {
             font-family: 'Cinzel Decorative', serif;
             letter-spacing: -1px;
         }
 
         /* Hero Section */
         .hero-canvas {
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.95)), 
-                        url('https://images.unsplash.com/photo-1586165368502-1bad197a6461?auto=format&fit=crop&w=1920&q=80');
+            background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.95)),
+                url('https://images.unsplash.com/photo-1586165368502-1bad197a6461?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             height: 100vh;
@@ -59,7 +66,7 @@
 
         .title-stroke {
             -webkit-text-stroke: 1px var(--gold-leaf);
-            color: transparent;
+            color: var(--parchment);
         }
 
         /* Barra de Herramientas Superior */
@@ -69,13 +76,13 @@
             left: 50%;
             transform: translateX(-50%);
             z-index: 1000;
-            background: rgba(18, 18, 18, 0.9);
+            background: rgba(255, 255, 255, 0.9);
             border: 1px solid var(--gold-leaf);
             padding: 10px 20px;
             display: flex;
             gap: clamp(10px, 2vw, 25px);
             backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             max-width: 95vw;
         }
 
@@ -99,7 +106,7 @@
         .tool-btn:hover {
             opacity: 1;
             transform: translateY(-2px);
-            color: white;
+            color: var(--blood-wine);
         }
 
         /* Firma */
@@ -132,7 +139,7 @@
         .window-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.95);
+            background: rgba(255, 255, 255, 0.9);
             z-index: 2000;
             display: none;
             align-items: center;
@@ -169,15 +176,27 @@
             transition: color 0.3s;
         }
 
-        .close-btn:hover { color: var(--gold-leaf); }
+        .close-btn:hover {
+            color: var(--gold-leaf);
+        }
 
         /* Elementos de Contenido */
         .critical-question {
-            background: rgba(136, 8, 8, 0.15);
+            background: rgba(136, 8, 8, 0.05);
             border-left: 4px solid var(--blood-wine);
             padding: 25px;
             margin: 30px 0;
             position: relative;
+        }
+
+        .critical-title {
+            color: var(--gold-leaf);
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            font-family: 'Montserrat', sans-serif;
         }
 
         .critical-question::after {
@@ -202,31 +221,132 @@
 
         .video-container iframe {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
 
         /* Efectos Visuales */
         .sword-flash {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: white;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gold-leaf);
             opacity: 0;
             pointer-events: none;
             z-index: 9999;
         }
 
-        .flash-anim { animation: flash-impact 0.2s ease-out; }
-        @keyframes flash-impact { 0% { opacity: 0.6; } 100% { opacity: 0; } }
+        .flash-anim {
+            animation: flash-impact 0.2s ease-out;
+        }
+
+        @keyframes flash-impact {
+            0% {
+                opacity: 0.6;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
 
         /* Helpers de Texto */
-        .highlight-gold { color: var(--gold-leaf); font-weight: bold; }
+        .highlight-gold {
+            color: var(--gold-leaf);
+            font-weight: bold;
+        }
+
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
         }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .image-frame {
+            border: 4px double var(--gold-leaf);
+            background: #000;
+            aspect-ratio: 4/5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s ease;
+        }
+
+        .image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.6;
+            filter: sepia(0.3) contrast(1.1);
+            transition: opacity 0.4s ease;
+        }
+
+        .image-frame:hover img {
+            opacity: 1;
+            filter: sepia(0) contrast(1.2);
+        }
+
+        .frame-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(255, 255, 255, 0.95));
+            padding: 20px 10px 10px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .manifiesto-lista {
+            list-style: none;
+            padding-left: 1.5rem;
+        }
+
+        .manifiesto-lista li {
+            position: relative;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .manifiesto-lista li::before {
+            content: '⚔';
+            position: absolute;
+            left: 0;
+            color: var(--gold-leaf);
+            font-size: 0.8rem;
+        }
+
+        a.hover-link {
+            text-decoration: none;
+            color: var(--parchment);
+            transition: all 0.3s;
+        }
+
+        a.hover-link:hover {
+            color: var(--blood-wine);
+            text-decoration: underline;
+        }
     </style>
 </head>
+
 <body>
 
     <div id="flash-effect" class="sword-flash"></div>
@@ -238,7 +358,7 @@
         </button>
         <button onclick="openWindow('win-cuerpo')" class="tool-btn">
             <i class="fas fa-user-ninja"></i>
-            <span>Cuerpo</span>
+            <span>Voz del Cuerpo</span>
         </button>
         <button onclick="openWindow('win-agonismo')" class="tool-btn">
             <i class="fas fa-bolt"></i>
@@ -252,6 +372,11 @@
             <i class="fas fa-shield-alt"></i>
             <span>Arsenal</span>
         </button>
+        <div style="width: 1px; background: var(--gold-leaf); height: 30px; opacity: 0.3;"></div>
+        <button onclick="location.reload()" class="tool-btn">
+            <i class="fas fa-redo"></i>
+            <span>Reiniciar</span>
+        </button>
     </nav>
 
     <header class="hero-canvas">
@@ -260,11 +385,12 @@
                 PEDAGOGÍA <br>
                 <span class="title-stroke">DEL CONFLICTO</span>
             </h1>
-            <p style="margin-top: 20px; letter-spacing: 5px; text-transform: uppercase; font-weight: bold; color: var(--gold-leaf);">
+            <p
+                style="margin-top: 20px; letter-spacing: 5px; text-transform: uppercase; font-weight: bold; color: var(--gold-leaf);">
                 Insurrección Intelectual
             </p>
-            <button onclick="openWindow('win-genesis')" 
-                    style="margin-top: 40px; padding: 15px 40px; background: var(--gold-leaf); color: black; border: none; font-weight: 900; cursor: pointer; text-transform: uppercase; letter-spacing: 2px;">
+            <button onclick="openWindow('win-genesis')"
+                style="margin-top: 40px; padding: 15px 40px; background: var(--gold-leaf); color: white; border: none; font-weight: 900; cursor: pointer; text-transform: uppercase; letter-spacing: 2px;">
                 Entrar al Devenir
             </button>
         </div>
@@ -275,82 +401,284 @@
         </div>
     </header>
 
-    <!-- I. GÉNESIS -->
     <div id="win-genesis" class="window-overlay" onclick="handleOverlayClick(event, 'win-genesis')">
         <div class="window-content">
             <div class="window-header">
-                <h2 style="color: var(--gold-leaf); text-transform: uppercase; font-style: italic;">I. Génesis del Devenir</h2>
+                <h2 style="color: var(--gold-leaf); text-transform: uppercase; font-style: italic;">I. Génesis del
+                    Devenir</h2>
                 <span class="close-btn" onclick="closeWindow('win-genesis')">×</span>
             </div>
-            <p style="font-size: 1.5rem; font-style: italic; border-left: 4px solid var(--blood-wine); padding-left: 20px; margin-bottom: 30px;">
+
+            <p
+                style="font-size: 1.5rem; font-style: italic; border-left: 4px solid var(--blood-wine); padding-left: 20px; margin-bottom: 30px;">
                 "Pólemos es el padre y el rey de todas las cosas..." — <span class="highlight-gold">Heráclito</span>
             </p>
-            <div style="background: rgba(0,0,0,0.4); padding: 30px; border: 1px double var(--gold-leaf);">
-                <h3 style="text-align: center; color: var(--gold-leaf); margin-bottom: 20px;">MANIFIESTO DE LA INTENCIÓN</h3>
-                <p style="margin-bottom: 20px; text-align: justify;">Esta plataforma emerge como una respuesta necesaria a la pasividad del aula contemporánea. Nuestra intención es subvertir el consenso complaciente.</p>
+
+            <div style="background: rgba(0,0,0,0.05); padding: 30px; border: 1px double var(--gold-leaf);">
+                <h3 style="text-align: center; color: var(--gold-leaf); margin-bottom: 20px; letter-spacing: 2px;">
+                    MANIFIESTO DE LA INTENCIÓN</h3>
+                <p style="margin-bottom: 20px; text-align: justify; font-size: 1.1rem;">Esta plataforma emerge como una
+                    respuesta necesaria a la pasividad del aula contemporánea. Nuestra intención es subvertir el
+                    consenso complaciente mediante tres ejes de acción pedagógica:</p>
+
                 <div class="grid-3">
                     <div style="border-left: 2px solid rgba(212,175,55,0.3); padding-left: 15px;">
-                        <h4 class="highlight-gold">1. El Conflicto como Diálogo</h4>
-                        <p style="font-size: 0.9rem;">Reconocer en el conflicto una oportunidad de diálogo constructivo.</p>
+                        <h4 class="highlight-gold" style="font-size: 1rem; margin-bottom: 10px;">1. El Conflicto como
+                            Diálogo</h4>
+                        <p style="font-size: 0.95rem;">Abrazamos los postulados de <span
+                                style="font-style: italic;">Heráclito</span> para reconocer en el conflicto no una
+                            ruptura, sino una <strong>oportunidad de diálogo constructivo</strong>.</p>
                     </div>
                     <div style="border-left: 2px solid rgba(212,175,55,0.3); padding-left: 15px;">
-                        <h4 class="highlight-gold">2. El Cuerpo como Soporte</h4>
-                        <p style="font-size: 0.9rem;">El cuerpo docente como configurador de sentido.</p>
+                        <h4 class="highlight-gold" style="font-size: 1rem; margin-bottom: 10px;">2. El Cuerpo como
+                            Soporte</h4>
+                        <p style="font-size: 0.95rem;">Reconocemos el <strong>cuerpo del docente</strong> como el
+                            principal configurador de sentido, a pesar de sus limitaciones sistémicas.</p>
                     </div>
                     <div style="border-left: 2px solid rgba(212,175,55,0.3); padding-left: 15px;">
-                        <h4 class="highlight-gold">3. Ética Agonista</h4>
-                        <p style="font-size: 0.9rem;">El disenso como condición para la construcción de conocimiento.</p>
+                        <h4 class="highlight-gold" style="font-size: 1rem; margin-bottom: 10px;">3. Ética Agonista del
+                            Disenso</h4>
+                        <p style="font-size: 0.95rem;">Implementamos una <strong>ética agonista</strong> que justifica
+                            el disenso como condición metodológica para la construcción de conocimiento.</p>
                     </div>
                 </div>
+
+                <div class="critical-question">
+                    <div class="critical-title">Interrogante de Combate</div>
+                    <p style="font-style: italic; font-size: 1.1rem;">¿Es posible aprender algo verdaderamente nuevo en
+                        un espacio donde todos estamos de acuerdo, o la armonía absoluta es solo otra forma de silencio
+                        intelectual?</p>
+                </div>
             </div>
+<div class="video-container">
+    <iframe 
+        src="https://www.youtube.com/embed/Vkv5QIeq6Vg"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+</div>
+</div>
         </div>
     </div>
 
-    <!-- II. CUERPO -->
     <div id="win-cuerpo" class="window-overlay" onclick="handleOverlayClick(event, 'win-cuerpo')">
         <div class="window-content">
             <div class="window-header">
-                <h2 style="color: var(--gold-leaf); text-transform: uppercase;">II. La Voz del Cuerpo</h2>
+                <h2 style="color: var(--gold-leaf); text-transform: uppercase;">II. La Voz del Cuerpo del Docente</h2>
                 <span class="close-btn" onclick="closeWindow('win-cuerpo')">×</span>
             </div>
-            <div style="display: flex; flex-wrap: wrap; gap: 30px;">
+
+            <div style="display: flex; flex-wrap: wrap; gap: 30px; margin-bottom: 40px;">
                 <div style="flex: 1; min-width: 300px;">
-                    <p style="font-size: 1.2rem; font-style: italic; margin-bottom: 20px;">"El cuerpo es el primer territorio político en el aula."</p>
-                    <p>La presencia física comunica jerarquías. La voz no solo emite conceptos, emite <span class="highlight-gold">frecuencias de poder</span>.</p>
+                    <p style="font-size: 1.25rem; font-style: italic; font-weight: bold; margin-bottom: 20px;">"El
+                        cuerpo es el primer territorio político en el aula."</p>
+                    <p style="font-size: 1.1rem;">
+                        El docente no es un ente incorpóreo. Su presencia física comunica jerarquías, aperturas o
+                        clausuras. La voz no solo emite conceptos, emite <span class="highlight-gold">frecuencias de
+                            poder</span>.
+                    </p>
+
                     <div class="critical-question">
-                        <p style="font-style: italic;">¿Cómo condiciona su propia libertad cuando su voz se limita a reproducir el manual institucional?</p>
+                        <div class="critical-title">Interrogante de Combate</div>
+                        <p style="font-style: italic; font-size: 1.1rem;">¿Cómo condiciona su propia libertad cuando su
+                            voz se limita a reproducir el manual institucional en lugar de encarnar la duda?</p>
                     </div>
                 </div>
-                <div style="flex: 1; min-width: 300px; border: 2px solid var(--gold-leaf); padding: 5px;">
-                    <img src="https://images.unsplash.com/photo-1544531585-9847b68c8c86?auto=format&fit=crop&w=800&q=80" style="width: 100%; filter: grayscale(1);" alt="[Imagen del Cuerpo Docente]">
+                <div
+                    style="flex: 1; min-width: 300px; border: 2px solid var(--gold-leaf); padding: 5px; position: relative;">
+                    <img src="https://lh3.googleusercontent.com/d/1UKjabRYplKFcYFiuiGWm131kw2xsScPY"
+                        style="width: 100%; filter: grayscale(1); opacity: 0.9;" alt="Cuerpo Docente">
+                    <div
+                        style="position: absolute; bottom: 20px; right: 20px; background: rgba(136,8,8,0.8); padding: 5px 15px; font-size: 10px; color: white; text-transform: uppercase; font-weight: bold; letter-spacing: 2px;">
+                        Territorio Encarnado</div>
+                </div>
+            </div>
+
+            <div style="border-top: 1px solid rgba(212, 175, 55, 0.2); padding-top: 30px;">
+                <h3
+                    style="color: var(--gold-leaf); text-transform: uppercase; font-style: italic; margin-bottom: 30px;">
+                    Cartografía del Gesto</h3>
+                <div class="grid-4">
+                    <div class="image-frame">
+                        <img src="https://lh3.googleusercontent.com/d/1in7MJYSExklhhyxgy87HMdpplQt7fL-k"
+                            alt="I. El Gesto de Mando">
+                        <div class="frame-label"><span
+                                style="font-size: 10px; color: var(--gold-leaf); font-weight: 900; text-transform: uppercase; letter-spacing: 2px;">I.
+                                El Gesto de Mando</span></div>
+                    </div>
+                    <div class="image-frame">
+                        <img src="https://lh3.googleusercontent.com/d/1Q7cOBxFA7HTVawWpuYEQcOsWhV99x_aX"
+                            alt="II. La Inclinación">
+                        <div class="frame-label"><span
+                                style="font-size: 10px; color: var(--gold-leaf); font-weight: 900; text-transform: uppercase; letter-spacing: 2px;">II.
+                                La Inclinación</span></div>
+                    </div>
+                    <div class="image-frame">
+                        <img src="https://lh3.googleusercontent.com/d/1Xu2d2goda5VvDxqD0us-Vek5gk5Tbawt"
+                            alt="III. El Desplazamiento">
+                        <div class="frame-label"><span
+                                style="font-size: 10px; color: var(--gold-leaf); font-weight: 900; text-transform: uppercase; letter-spacing: 2px;">III.
+                                El Desplazamiento</span></div>
+                    </div>
+                    <div class="image-frame">
+                        <img src="https://lh3.googleusercontent.com/d/1nKnT1C7X2iLrbuQlODQCIJV_sYOFe8gk"
+                            alt="IV. La Pausa">
+                        <div class="frame-label"><span
+                                style="font-size: 10px; color: var(--gold-leaf); font-weight: 900; text-transform: uppercase; letter-spacing: 2px;">IV.
+                                La Pausa</span></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ARSENAL -->
+    <div id="win-agonismo" class="window-overlay" onclick="handleOverlayClick(event, 'win-agonismo')">
+        <div class="window-content">
+            <div class="window-header">
+                <h2 style="color: var(--gold-leaf); text-transform: uppercase;">III. El Agonismo en el Aula</h2>
+                <span class="close-btn" onclick="closeWindow('win-agonismo')">×</span>
+            </div>
+
+            <div class="critical-question">
+                <div class="critical-title">Interrogante de Combate</div>
+                <p style="font-style: italic; font-size: 1.1rem;">¿En qué momento permitimos que el respeto se convierta
+                    en miedo a contradecir, transformando el aula en un monólogo de la autoridad?</p>
+            </div>
+
+            <div class="grid-2">
+                <div style="border-left: 4px solid var(--blood-wine); background: rgba(0,0,0,0.03); padding: 25px;">
+                    <h4
+                        style="color: var(--gold-leaf); text-transform: uppercase; font-weight: 900; font-size: 1.1rem; margin-bottom: 15px;">
+                        <a href="https://www.teatro.es/++resource++plonetheme.teatro.images/multimedia/prog/005068/005068-01.jpg_pdf.pdf" class="hover-link" target="_blank">La Tensión Dialéctica</a>
+                    </h4>
+                    <p style="font-size: 1rem;">No buscamos la paz de los cementerios donde nadie discrepa, sino el
+                        combate de ideas donde el pensamiento se afila.</p>
+                </div>
+                <div style="border-left: 4px solid var(--gold-leaf); background: rgba(0,0,0,0.03); padding: 25px;">
+                    <h4
+                        style="color: var(--gold-leaf); text-transform: uppercase; font-weight: 900; font-size: 1.1rem; margin-bottom: 15px;">
+                        <a href="https://lh3.googleusercontent.com/d/1pEKdr3jPDgZahnipxv-My9MOJzF5sh4d" class="hover-link" target="_blank">Desobediencia Epistémica</a>
+                    </h4>
+                    <p style="font-size: 1rem;">El aula es un ring donde la certeza muere para que nazca el conocimiento
+                        crítico.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="win-soporte" class="window-overlay" onclick="handleOverlayClick(event, 'win-soporte')">
+        <div class="window-content">
+            <div class="window-header">
+                <h2 style="color: var(--gold-leaf); text-transform: uppercase;">IV. Soporte de Estrategias</h2>
+                <span class="close-btn" onclick="closeWindow('win-soporte')">×</span>
+            </div>
+
+            <div class="critical-question" style="margin-bottom: 40px;">
+                <div class="critical-title">Interrogante de Combate</div>
+                <p style="font-style: italic; font-size: 1.1rem;">Si el conocimiento es una construcción social, ¿por
+                    qué seguimos evaluando la capacidad de repetir en lugar de la capacidad de cuestionar?</p>
+            </div>
+
+            <div class="grid-3">
+                <div
+                    style="padding: 25px; border: 1px solid rgba(212,175,55,0.2); background: rgba(0,0,0,0.02); transition: all 0.5s;">
+                    <img src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?auto=format&fit=crop&w=600&q=80"
+                        alt=""
+                        style="width: 100%; height: 180px; object-fit: cover; filter: grayscale(1); margin-bottom: 15px;">
+                    <h4 class="highlight-gold"
+                        style="font-size: 1.1rem; text-transform: uppercase; margin-bottom: 10px;">Debate Agónico</h4>
+                </div>
+                <div
+                    style="padding: 25px; border: 1px solid rgba(212,175,55,0.2); background: rgba(0,0,0,0.02); transition: all 0.5s;">
+                    <img src="https://images.unsplash.com/photo-1516280440504-45ea072049ba?auto=format&fit=crop&w=600&q=80"
+                        alt=""
+                        style="width: 100%; height: 180px; object-fit: cover; filter: grayscale(1); margin-bottom: 15px;">
+                    <h4 class="highlight-gold"
+                        style="font-size: 1.1rem; text-transform: uppercase; margin-bottom: 10px;">Performance Crítica
+                    </h4>
+                </div>
+                <div
+                    style="padding: 25px; border: 1px solid rgba(212,175,55,0.2); background: rgba(0,0,0,0.02); transition: all 0.5s;">
+                    <img src="https://images.unsplash.com/photo-1499887142886-791eca5918cd?auto=format&fit=crop&w=600&q=80"
+                        alt=""
+                        style="width: 100%; height: 180px; object-fit: cover; filter: grayscale(1); margin-bottom: 15px;">
+                    <h4 class="highlight-gold"
+                        style="font-size: 1.1rem; text-transform: uppercase; margin-bottom: 10px;">Provocación Estética
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="win-arsenal" class="window-overlay" onclick="handleOverlayClick(event, 'win-arsenal')">
         <div class="window-content">
             <div class="window-header">
                 <h2 style="color: var(--gold-leaf); text-transform: uppercase;">V. Arsenal de Recursos</h2>
                 <span class="close-btn" onclick="closeWindow('win-arsenal')">×</span>
             </div>
-            <div class="grid-3">
-                <div style="border: 1px solid rgba(212,175,55,0.3); padding: 20px;">
-                    <h4 class="highlight-gold"><i class="fas fa-book-open"></i> Heráclito</h4>
-                    <p style="font-size: 0.85rem; margin-top: 10px;">La unidad de los contrarios como base del movimiento dialéctico.</p>
-                </div>
-                <div style="border: 1px solid rgba(212,175,55,0.3); padding: 20px;">
-                    <h4 class="highlight-gold"><i class="fas fa-eye"></i> Foucault</h4>
-                    <p style="font-size: 0.85rem; margin-top: 10px;">Vigilar y castigar: la microfísica del poder en el aula.</p>
-                </div>
-                <div style="border: 1px solid rgba(212,175,55,0.3); padding: 20px;">
-                    <h4 class="highlight-gold"><i class="fas fa-bolt"></i> Mouffe</h4>
-                    <p style="font-size: 0.85rem; margin-top: 10px;">El retorno de lo político y el agonismo democrático.</p>
+
+            <div class="critical-question">
+                <div class="critical-title">Interrogante de Combate</div>
+                <p style="font-style: italic; font-size: 1.1rem;">¿Qué herramienta de este arsenal se atrevería usted a
+                    usar mañana mismo para romper la inercia de su clase?</p>
+            </div>
+
+            <div
+                style="border: 1px solid rgba(212, 175, 55, 0.3); padding: 30px; margin-bottom: 25px; background: rgba(0,0,0,0.03);">
+                <h4
+                    style="color: var(--gold-leaf); font-weight: 900; text-transform: uppercase; font-size: 1.25rem; margin-bottom: 15px;">
+                    <i class="fas fa-book-open" style="margin-right: 10px;"></i> Manifiesto del Disenso
+                </h4>
+                <ul class="manifiesto-lista">
+                    <li><strong>El conflicto es vinculante:</strong> No hay aprendizaje sin incomodidad.</li>
+                    <li><strong>Aceptación de la Alteridad:</strong> El oponente es un adversario necesario.</li>
+                    <li><strong>Suspensión de la Verdad Absoluta:</strong> Todo dogma debe ser martillado.</li>
+                    <li><strong>Ética del Cuidado Agónico:</strong> Colisión de conceptos, no anulación ontológica.</li>
+                </ul>
+            </div>
+
+            <div
+                style="border: 1px solid rgba(212, 175, 55, 0.3); padding: 30px; margin-bottom: 25px; background: rgba(0,0,0,0.03);">
+                <h4
+                    style="color: var(--gold-leaf); font-weight: 900; text-transform: uppercase; font-size: 1.25rem; margin-bottom: 15px;">
+                    <i class="fas fa-video" style="margin-right: 10px;"></i> Videoteca de Combate
+                </h4>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/2xPeihw0fTs" title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
             </div>
-            <div class="video-container" style="margin-top: 30px;">
-                <iframe src="https://www.youtube.com/embed/Vkv5QIeq6Vg" frameborder="0" allowfullscreen></iframe>
+
+            <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(212, 175, 55, 0.2);">
+                <h3
+                    style="font-size: 1.25rem; font-weight: 900; color: var(--gold-leaf); text-transform: uppercase; margin-bottom: 25px; font-style: italic;">
+                    Cimientos Filosóficos</h3>
+                <div class="grid-3">
+                    <div style="background: rgba(0,0,0,0.03); padding: 25px; border-left: 2px solid var(--blood-wine);">
+                        <h5 class="highlight-gold" style="font-size: 1.1rem; margin-bottom: 10px;">
+                            <a href="https://www.mercaba.es/grecia/filosofia_de_heraclito.pdf" target="_blank"
+                                class="hover-link">Heráclito de Éfeso</a>
+                        </h5>
+                        <p style="font-size: 0.9rem;">Fundamento de la <strong>unidad de los contrarios</strong>.</p>
+                    </div>
+                    <div style="background: rgba(0,0,0,0.03); padding: 25px; border-left: 2px solid var(--blood-wine);">
+                        <h5 class="highlight-gold" style="font-size: 1.1rem; margin-bottom: 10px;">
+                            <a href="https://www.ivanillich.org.mx/Foucault-Castigar.pdf" target="_blank"
+                                class="hover-link">Michel Foucault</a>
+                        </h5>
+                        <p style="font-size: 0.9rem;">Análisis de la <strong>relación saber-poder</strong>.</p>
+                    </div>
+                    <div style="background: rgba(0,0,0,0.03); padding: 25px; border-left: 2px solid var(--blood-wine);">
+                        <h5 class="highlight-gold" style="font-size: 1.1rem; margin-bottom: 10px;">
+                            <a href="https://www.inep.org/images/2025/TXT/2014-Mouffe-Agonistica.pdf" target="_blank"
+                                class="hover-link">Chantal Mouffe</a>
+                        </h5>
+                        <p style="font-size: 0.9rem;">Teoría del <strong>Agonismo</strong> democrático.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -358,21 +686,21 @@
     <script>
         // Audio System
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        
+
         function playSound(freq, decay, type = 'sine') {
             if (audioCtx.state === 'suspended') audioCtx.resume();
             const osc = audioCtx.createOscillator();
             const gain = audioCtx.createGain();
-            
+
             osc.type = type;
             osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-            
+
             gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
             gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + decay);
-            
+
             osc.connect(gain);
             gain.connect(audioCtx.destination);
-            
+
             osc.start();
             osc.stop(audioCtx.currentTime + decay);
         }
@@ -416,4 +744,5 @@
         });
     </script>
 </body>
+
 </html>
